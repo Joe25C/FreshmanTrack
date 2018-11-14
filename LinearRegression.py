@@ -1,24 +1,18 @@
 import numpy as np
-L = .001
-data = np.array([[1,0,2],[2,0,4],[1,1,3],[1,2,4]]) 
+L = .1
+data = np.array([[1,0,3],[2,0,5],[1,1,4],[1,2,5]]) 
     # last value is the output
 numData = data.shape[0]
+    # Number of data points
 numFeatures = data.shape[1]
     # including the 1 at the end
 outputs = data[:, [numFeatures-1]].T
     #outputs
-print(outputs)
 weights = np.zeros(numFeatures)
     # Initialize to zeroes
 inputs = np.hstack([np.delete(data, numFeatures - 1, 1), np.ones((numData,1))])
     # Replace output (last entry) of data with a 1 to use as the bias
-print("NumData:")
-print(numData)
-print("NumFeatures:")
-print(numFeatures)
-print("Inputs:")
-print(inputs)
-for y in range (0,600):
+for y in range (0,2000):
     print("INPUTS")
     print(inputs)
     print(weights)
@@ -29,17 +23,24 @@ for y in range (0,600):
     print("Outputs: ")
     print(outputs)
     loss = (estimates-outputs)
-    # this returns a row and not a scalar, idk why but I'll m ake it work
     print("Loss: ")
     print(loss)
     lossSum = np.sum(loss)
     print(lossSum)
     gradient = np.zeros((1, numFeatures))
     print(gradient)
+    print 
     for x in range (0, numFeatures):
-        gradient[0,x] = np.sum(inputs[:, [x]].T) * lossSum         
+        print("TEST")
+        print(inputs[:, [x]].T)
+        print(loss)
+        print(inputs[:, [x]].T * loss)
+        gradient[0,x] = np.sum(inputs[:, [x]].T * loss)      
     print(gradient)
     weights = weights - L * gradient
-    y+=1
 print ("WEIGHTS")
 print (weights)
+for x in range (0, numFeatures-1):
+    print("Weight " + str(x) + ": " + str(weights[0,x]))
+print("Bias: " + str(weights[0,numFeatures-1]))
+        
