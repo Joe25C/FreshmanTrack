@@ -86,15 +86,13 @@ if __name__ == '__main__':
     count = 0 # the number of correct predictions
 
     # the output of the model using testing set
-    y_points = np.ones((np.shape(X_test)[0], ))
     for i in range(np.shape(X_test)[0]):
         temp = 0
-        y_points[i] = sigmoid(X_test[i] @ theta_temp.transpose())
         if sigmoid(X_test[i] @ theta_temp.transpose()) >= 0.5:
             temp = 1
         if temp == y_test[i]:
             count = count + 1
-    print('Logistic Regression Accuracy (Gradient Descent):',  count / np.shape(X_test)[0])
+    print('Logistic Regression Accuracy (Gradient Descent):',  count / np.shape(y_test)[0])
 
     """plot the result (it is kind of useless)"""
     # plt.figure()
@@ -131,12 +129,10 @@ if __name__ == '__main__':
 
     """test the accuracy"""
     count = 0
-    y_points = np.ones((np.shape(X_test)[0], ))
     for i in range(np.shape(X_test)[0]):
         temp = 0
-        y_points[i] = sigmoid(X_test[i] @ theta_temp.transpose())
         if sigmoid(X_test[i] @ theta_temp.transpose()) >= 0.5:
             temp = 1
         if temp == y_test[i]:
             count = count + 1
-    print("Logistic Regression Accuracy (Mini-batch Gradient Descent):", count / np.shape(X_test)[0])
+    print("Logistic Regression Accuracy (Mini-batch Gradient Descent):", count / np.shape(y_test)[0])
