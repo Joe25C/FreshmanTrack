@@ -31,14 +31,14 @@
    \end{eqnarray}
    $$
 
-3. the error $δ^l_j$ of neuron $j$ in layer $l$
+3. the gradient $δ^l_j$ of neuron $j$ in layer $l$
    $$
    \begin{eqnarray} 
      \delta^l_j = \frac{\partial C}{\partial z^l_j}
    \end{eqnarray}
    $$
 
-4. the error in the output layer, $δ^L$
+4. the gradient in the output layer, $δ^L$
    $$
    \begin{eqnarray} 
      \delta^L_j = \frac{\partial C}{\partial z^L_j}= \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) = (a_j^L-y_j)\sigma'(z^L_j)
@@ -51,7 +51,7 @@
    \end{eqnarray}
    $$
 
-5. the error $δ^l$ in terms of the error in the next layer, $δ^{l+1}$, where $l < L$
+5. the gradient $δ^l$ in terms of the gradient in the next layer, $δ^{l+1}$, where $l < L$
    $$
    \begin{eqnarray} 
      \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l)
